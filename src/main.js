@@ -22,6 +22,8 @@ let selected = null;
 let detail = null;
 let detailPeers = null;
 let globalDir = "";
+let enginePort = 0;
+const BRIDGE_PORT = 16800;
 
 const HIST_N = 60;
 const speedHist = new Array(HIST_N).fill(0);
@@ -94,6 +96,7 @@ function openSocket(port) {
 async function connect() {
   const cfg = await invoke("rpc_config");
   secret = cfg.secret;
+  enginePort = cfg.port;
   for (let i = 0; i < 50; i++) {
     try {
       await openSocket(cfg.port);
@@ -669,6 +672,9 @@ function openAdd(prefill = "") {
 
 function openSettings() {
   paintTheme(); paintAccent(); paintSetConn(); paintSeed();
+  const note = $("#pair-note");
+  note.hidden = !enginePort || enginePort === BRIDGE_PORT;
+  note.textContent = `Port ${BRIDGE_PORT} is in use by another program, so the extension may need pairing again after each restart.`;
   $("#set-concurrent").value = settings.concurrent;
   $("#set-limit").value = settings.limit;
   openModal("#settings-modal");
@@ -767,6 +773,15 @@ for (const m of $$(".scrim")) {
 /* ================= events ================= */
 
 $("#btn-add").addEventListener("click", () => openAdd());
+$("#copy-pair").addEventListener("click", async () => {
+  if (!enginePort || !secret) { toast("The engine isn't ready yet.", true); return; }
+  try {
+    await navigator.clipboard.writeText(`NEXFETCH:${enginePort}:${secret}`);
+    toast("Pairing code copied. Paste it into the extension.");
+  } catch {
+    toast("Couldn't copy the code.", true);
+  }
+});
 $("#btn-settings").addEventListener("click", openSettings);
 $("#btn-pause-all").addEventListener("click", async () => { try { await rpc("aria2.pauseAll"); poll(); } catch (err) { toast(err.message, true); } });
 $("#btn-resume-all").addEventListener("click", async () => { try { await rpc("aria2.unpauseAll"); poll(); } catch (err) { toast(err.message, true); } });

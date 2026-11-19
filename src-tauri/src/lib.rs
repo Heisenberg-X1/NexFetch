@@ -6,6 +6,9 @@ use serde_json::{json, Value};
 use tauri::{Emitter, Manager, RunEvent, State};
 use tauri_plugin_shell::{process::CommandChild, ShellExt};
 
+/// The browser extension looks for the engine here. If this port is taken, a random one is used instead.
+const BRIDGE_PORT: u16 = 16800;
+
 struct RpcConfig {
     port: u16,
     secret: String,
@@ -83,12 +86,27 @@ pub fn run() {
             // Items from the very first launch (app was closed when the link was clicked).
             app.manage(Pending(Mutex::new(launch_items(std::env::args().skip(1)))));
 
-            let port = TcpListener::bind("127.0.0.1:0")?.local_addr()?.port();
-            let secret: String = rand::thread_rng()
-                .sample_iter(&Alphanumeric)
-                .take(32)
-                .map(char::from)
-                .collect();
+            // Same port and secret on every launch, so the browser extension only has to be paired once.
+            let port = if TcpListener::bind(("127.0.0.1", BRIDGE_PORT)).is_ok() {
+                BRIDGE_PORT
+            } else {
+                TcpListener::bind("127.0.0.1:0")?.local_addr()?.port()
+            };
+            let config_dir = app.path().app_config_dir()?;
+            std::fs::create_dir_all(&config_dir)?;
+            let secret_file = config_dir.join("rpc-secret.txt");
+            let secret: String = match std::fs::read_to_string(&secret_file) {
+                Ok(saved) if saved.trim().len() >= 24 => saved.trim().to_string(),
+                _ => {
+                    let fresh: String = rand::thread_rng()
+                        .sample_iter(&Alphanumeric)
+                        .take(32)
+                        .map(char::from)
+                        .collect();
+                    let _ = std::fs::write(&secret_file, &fresh);
+                    fresh
+                }
+            };
             let dir = app.path().download_dir()?.to_string_lossy().to_string();
 
             let args: Vec<String> = vec![

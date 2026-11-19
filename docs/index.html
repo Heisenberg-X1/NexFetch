@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NexFetch: a free, open-source download manager for Windows</title>
+  <meta name="description" content="NexFetch is a free download manager for Windows with up to 16 connections per file, torrents and magnet links, and a browser extension for Chrome, Edge, Brave, Opera and Firefox. No ads. Open source." />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NexFetch: free, open-source download manager" />
+  <meta property="og:description" content="Fast downloads, torrents and a browser extension. No ads, no tracking, GPL-3.0." />
+  <meta property="og:image" content="https://heisenberg-x1.github.io/NexFetch/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script>try{var t=localStorage.getItem("nf-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="ambient" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="Main">
+    <a class="brand" href="#top"><img src="assets/nexfetch-logo.svg" alt="" width="28" height="28" /><span>NexFetch</span></a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#extension">Extension</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+      <a href="#support">Support</a>
+    </div>
+    <div class="nav-end">
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch between light and dark theme" title="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+      </button>
+      <a class="btn small" href="https://github.com/Heisenberg-X1/NexFetch" rel="noopener">GitHub</a>
+      <a class="btn small primary" href="https://github.com/Heisenberg-X1/NexFetch/releases/latest" rel="noopener">Download</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <h1>Fast downloads. No ads. Fully open source.</h1>
+      <p class="lead">NexFetch is a free download manager for Windows. It splits every file into up to 16 connections, handles torrents and magnet links, and picks up downloads from Chrome, Edge, Brave, Opera and Firefox.</p>
+      <div class="cta">
+        <a class="btn big primary" href="https://github.com/Heisenberg-X1/NexFetch/releases/latest" rel="noopener">Download for Windows</a>
+        <a class="btn big" href="https://github.com/Heisenberg-X1/NexFetch" rel="noopener">View the source</a>
+      </div>
+      <p class="fine">Free for good. Windows 10 and 11, 64-bit. Licensed under GPL-3.0.</p>
+    </div>
+
+    <div class="demo glass" id="demo" role="group" aria-label="Live preview of the NexFetch download list">
+      <div class="demo-top"><span>Downloads</span><b id="demo-speed">18.7 MB/s</b></div>
+      <ul class="demo-list">
+        <li class="d-row" data-size="5900" data-speed="9.4" data-p="38">
+          <span class="tile k-pack">ISO</span>
+          <div class="d-main"><div class="d-name">ubuntu-24.04.1-desktop-amd64.iso</div><div class="d-meta"></div><div class="bar"><i></i></div></div>
+          <button class="ibtn" type="button" aria-label="Pause"></button>
+        </li>
+        <li class="d-row" data-size="1800" data-speed="6.1" data-p="61">
+          <span class="tile k-video">MKV</span>
+          <div class="d-main"><div class="d-name">Sintel_4K_Open_Movie.mkv</div><div class="d-meta"></div><div class="bar"><i></i></div></div>
+          <button class="ibtn" type="button" aria-label="Pause"></button>
+        </li>
+        <li class="d-row" data-size="630" data-speed="3.2" data-p="65">
+          <span class="tile k-torrent">TOR</span>
+          <div class="d-main"><div class="d-name">debian-12.5.0-amd64-netinst</div><div class="d-meta"></div><div class="bar"><i></i></div></div>
+          <button class="ibtn" type="button" aria-label="Pause"></button>
+        </li>
+        <li class="d-row" data-size="214" data-speed="0" data-p="28" data-paused="true">
+          <span class="tile k-pack">ZIP</span>
+          <div class="d-main"><div class="d-name">krita-5.2.2-x64.zip</div><div class="d-meta"></div><div class="bar"><i></i></div></div>
+          <button class="ibtn" type="button" aria-label="Resume"></button>
+        </li>
+      </ul>
+      <p class="demo-note">A live preview. Try pausing a download.</p>
+    </div>
+  </section>
+
+  <section class="band" id="features">
+    <div class="band-text">
+      <h2>Every file, in parts</h2>
+      <p>NexFetch opens up to 16 connections to the server and downloads different pieces at the same time, so big files like ISOs and installers finish sooner. If your connection drops, it picks up where it stopped.</p>
+      <p>Click any download to see a progress ring, speed over time and a piece map that shows exactly which parts are done. Sort by name, size or progress, search the list, and filter by type.</p>
+    </div>
+    <figure class="shot"><img src="assets/shot-main-dark.webp" alt="The NexFetch window with a download list on the left and a details panel with a progress ring and piece map on the right" width="2070" height="1290" loading="lazy" /></figure>
+  </section>
+
+  <section class="band flip">
+    <div class="band-text">
+      <h2>Torrents and magnet links</h2>
+      <p>Paste a magnet link or open a .torrent file. For torrents with many files, choose the ones you want before the download starts. See seeds, peers, upload and share ratio at a glance.</p>
+      <p>Seeding is off by default, so your upload bandwidth is yours. Turn it on with a share ratio when you want to give back. Set NexFetch as your magnet app in Windows and a click on any magnet link opens it.</p>
+    </div>
+    <figure class="shot"><img src="assets/shot-torrent-light.webp" alt="NexFetch in light theme showing a torrent with a file list where each file can be ticked or unticked" width="2070" height="1290" loading="lazy" /></figure>
+  </section>
+
+  <section class="band" id="extension">
+    <div class="band-text">
+      <h2>It catches downloads from your browser</h2>
+      <p>Install the NexFetch extension and downloads you start in Chrome, Edge, Brave, Opera or Firefox go straight to NexFetch. Right-click any link, video or audio and choose Download with NexFetch.</p>
+      <p>For sites where you have to be signed in, turn on cookie sharing and those downloads work too. Choose which file types to catch, ignore small files, and skip sites you don’t want handled.</p>
+      <ol class="steps">
+        <li>In NexFetch, open Settings and press <b>Copy pairing code</b>.</li>
+        <li>Click the NexFetch icon in your browser, open its settings and paste the code.</li>
+        <li>Download something. It shows up in NexFetch.</li>
+      </ol>
+      <p class="small">If NexFetch isn’t running, the browser keeps the download, so nothing is ever lost. The extension talks only to your own PC and needs the pairing code.</p>
+    </div>
+    <div class="ext-shots">
+      <img class="ext-options" src="assets/ext-options.webp" alt="The extension’s settings page showing a connected status, download filters and a cookie option" width="1024" height="1341" loading="lazy" />
+      <img class="ext-popup" src="assets/ext-popup.webp" alt="The extension’s toolbar popup showing Connected to NexFetch" width="640" height="438" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="more" aria-labelledby="more-h">
+    <h2 id="more-h">And the details that make it comfortable</h2>
+    <div class="more-grid">
+      <div><h3>Glass look, your colors</h3><p>Light, dark or automatic, with five accent colors. Smooth animations that switch off when your system asks for less motion.</p></div>
+      <div><h3>Categories and search</h3><p>Programs, video, music, archives, documents, images and torrents are sorted for you. Find anything with the search box.</p></div>
+      <div><h3>You set the limits</h3><p>Choose how many downloads run at once, cap the speed, and pick how many connections each file uses.</p></div>
+      <div><h3>Add links the easy way</h3><p>Copy a link and press Ctrl+V in the window. Paste a whole list of links at once, or give the file a name of your own.</p></div>
+      <div><h3>Keyboard friendly</h3><p>Ctrl+N adds a download, Ctrl+F searches, arrow keys move through the list, and Esc closes whatever is open.</p></div>
+      <div><h3>No ads, no tracking</h3><p>NexFetch has no ads, no accounts and no analytics. The only network traffic is the downloads you start.</p></div>
+    </div>
+    <div class="gallery">
+      <figure class="shot small-shot"><img src="assets/shot-add-dark.webp" alt="The Add download dialog with a magnet link pasted in" width="2070" height="1290" loading="lazy" /><figcaption>Add one link or a whole list, with a torrent file option.</figcaption></figure>
+      <figure class="shot small-shot"><img src="assets/shot-settings-dark.webp" alt="The Settings dialog with theme, accent color, download limits and a pairing code button" width="2070" height="1290" loading="lazy" /><figcaption>Settings for look, limits, seeding and the browser extension.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="install" id="install">
+    <h2>Install in a minute</h2>
+    <ol class="install-steps">
+      <li><div><h3>Download the installer</h3><p>Get the file ending in <b>-setup.exe</b> from the latest release on GitHub.</p></div></li>
+      <li><div><h3>Run it</h3><p>Windows may show “Windows protected your PC”. Click <b>More info</b>, then <b>Run anyway</b>. NexFetch is open source but not yet code-signed, and signing certificates cost money. Each release lists a SHA-256 checksum so you can check the file is the one we published.</p></div></li>
+      <li><div><h3>Optional: make it your magnet app</h3><p>Open Windows Settings, Apps, Default apps, search for <b>magnet</b> and choose NexFetch. Do the same for <b>.torrent</b> files.</p></div></li>
+    </ol>
+    <p class="small">Requires Windows 10 or 11, 64-bit. If Windows’ Smart App Control is on, it blocks every unsigned app. Turn it off in Windows Security, App and browser control, to run NexFetch.</p>
+    <a class="btn big primary" href="https://github.com/Heisenberg-X1/NexFetch/releases/latest" rel="noopener">Get the latest release</a>
+  </section>
+
+  <section class="oss" id="open-source">
+    <div class="oss-text">
+      <h2>Free software, built on free software</h2>
+      <p>NexFetch is licensed under the <b>GNU GPL v3</b>. You can read the code, change it and share it, as long as your version stays open too. That’s how we make sure there are never ads or hidden tracking added by anyone along the way.</p>
+      <p>It stands on two great open-source projects:</p>
+      <ul class="built">
+        <li><a href="https://github.com/aria2/aria2" rel="noopener"><b>aria2</b></a> is the download engine that does the heavy lifting: multi-connection downloads, resuming and BitTorrent. Licensed GPL-2.0-or-later.</li>
+        <li><a href="https://tauri.app" rel="noopener"><b>Tauri</b></a> turns web technology into a small, fast native Windows app. Licensed MIT or Apache-2.0.</li>
+      </ul>
+      <p class="small">NexFetch is an independent project and is not affiliated with or endorsed by aria2 or Tauri.</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/Heisenberg-X1/NexFetch" rel="noopener">Source on GitHub</a>
+        <a class="btn" href="https://github.com/Heisenberg-X1/NexFetch/blob/main/LICENSE" rel="noopener">Read the license</a>
+      </div>
+    </div>
+    <div class="logo-card glass">
+      <img src="assets/nexfetch-logo.svg" alt="The NexFetch logo: a downward arrow on an amber rounded square" width="112" height="112" />
+      <p><b>The NexFetch logo</b></p>
+      <p class="small">Free to use when you write about or link to NexFetch.</p>
+      <div class="cta tight">
+        <a class="btn small" href="assets/nexfetch-logo.svg" download>SVG</a>
+        <a class="btn small" href="assets/nexfetch-logo-512.png" download>PNG</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="soon" aria-labelledby="soon-h">
+    <h2 id="soon-h">What we’re working on</h2>
+    <p>No dates and no promises. This is the list we’re working through.</p>
+    <ul class="soon-list">
+      <li>Scheduler and download queues</li>
+      <li>Video downloads from streaming pages (HLS and DASH)</li>
+      <li>A code-signed installer and automatic updates</li>
+      <li>macOS and Linux builds</li>
+      <li>A button to open a finished file or its folder</li>
+    </ul>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>Questions people ask</h2>
+    <details><summary>Is NexFetch really free?</summary><p>Yes. It is free to use and always will be. There are no paid tiers, no ads and no accounts.</p></details>
+    <details><summary>Is it safe?</summary><p>The full source code is public, so anyone can check what it does. The installer is not code-signed yet, which is why Windows asks you to confirm. Only download it from the official GitHub releases page.</p></details>
+    <details><summary>Does it send any data about me?</summary><p>No. NexFetch has no analytics or telemetry. The only connections are the downloads you start. The browser extension talks only to NexFetch on your own computer.</p></details>
+    <details><summary>Why is it built on aria2?</summary><p>aria2 has been proven for more than fifteen years and handles resuming, multiple connections and BitTorrent very well. NexFetch adds the interface, the browser extension and the torrent file picker on top of it.</p></details>
+    <details><summary>Does it work on macOS or Linux?</summary><p>Not yet. The first release is for Windows 10 and 11. Mac and Linux builds are on the list.</p></details>
+    <details><summary>Can it download videos from YouTube and similar sites?</summary><p>Not at the moment. NexFetch downloads files from direct links, torrents and magnet links. Please respect the terms of the sites you use.</p></details>
+    <details><summary>Are torrents legal?</summary><p>BitTorrent is a normal technology that Linux distributions, game studios and open movies use to share big files. Only download and share what you have the right to.</p></details>
+    <details><summary>Why did the browser extension say NexFetch isn’t running?</summary><p>The extension needs the NexFetch app to be open. If it isn’t, your browser keeps the download. Start NexFetch and try again.</p></details>
+  </section>
+
+  <section class="support" id="support">
+    <h2>Help and support</h2>
+    <div class="support-grid">
+      <div>
+        <h3>Quick fixes</h3>
+        <ul class="fixes">
+          <li><b>“Engine not running”:</b> close NexFetch fully and open it again. If it keeps happening, reinstall.</li>
+          <li><b>Windows blocks the installer:</b> click More info, then Run anyway. If there is no such button, Smart App Control is on and has to be turned off.</li>
+          <li><b>Magnet links open another app:</b> in Windows Settings, Apps, Default apps, set NexFetch for <b>magnet</b>.</li>
+          <li><b>Extension can’t connect:</b> make sure NexFetch is open, then copy a fresh pairing code from its Settings.</li>
+          <li><b>A download fails with 403:</b> the site wants you signed in. Install the extension and turn on cookie sharing.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Report a problem</h3>
+        <p>Open an issue on GitHub and tell us your Windows version, the NexFetch version, what you did and what happened. A screenshot helps a lot.</p>
+        <a class="btn" href="https://github.com/Heisenberg-X1/NexFetch/issues/new" rel="noopener">Open an issue</a>
+        <h3>Ask a question or suggest something</h3>
+        <p>Browse the existing issues first, because your idea might already be there. Add a thumbs-up or a comment to help it along.</p>
+        <a class="btn" href="https://github.com/Heisenberg-X1/NexFetch/issues" rel="noopener">See all issues</a>
+      </div>
+      <div>
+        <h3>Ways to help</h3>
+        <ul class="fixes">
+          <li>Star the project on GitHub so more people find it.</li>
+          <li>Tell a friend who still puts up with ads in their download manager.</li>
+          <li>Report bugs, even small ones.</li>
+          <li>Send a pull request. The code is plain HTML, CSS, JavaScript and a little Rust.</li>
+        </ul>
+        <a class="btn primary" href="https://github.com/Heisenberg-X1/NexFetch" rel="noopener">NexFetch on GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div>
+    <a class="brand" href="#top"><img src="assets/nexfetch-logo.svg" alt="" width="24" height="24" /><span>NexFetch</span></a>
+    <p class="small">Free and open source under the GNU GPL v3.<br />© 2026 NexFetch contributors.</p>
+  </div>
+  <nav aria-label="Footer">
+    <a href="https://github.com/Heisenberg-X1/NexFetch" rel="noopener">GitHub</a>
+    <a href="https://github.com/Heisenberg-X1/NexFetch/releases" rel="noopener">Releases</a>
+    <a href="https://github.com/Heisenberg-X1/NexFetch/issues" rel="noopener">Issues</a>
+    <a href="https://github.com/aria2/aria2" rel="noopener">aria2</a>
+    <a href="https://tauri.app" rel="noopener">Tauri</a>
+  </nav>
+</footer>
+</body>
+</html>
